@@ -1,0 +1,208 @@
+:root {
+    --edutrack-primary: #4361ee;
+    --edutrack-dark: #1a1a2e;
+}
+
+body {
+    background-color: #f5f7fb;
+}
+
+.edutrack-navbar {
+    background: linear-gradient(90deg, var(--edutrack-dark), var(--edutrack-primary));
+}
+
+.card-stat {
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    padding: 1.25rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.card-stat h2 {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.bg-grad-1 { background: linear-gradient(135deg, #4361ee, #3a0ca3); }
+.bg-grad-2 { background: linear-gradient(135deg, #4cc9f0, #4895ef); }
+.bg-grad-3 { background: linear-gradient(135deg, #f72585, #b5179e); }
+.bg-grad-4 { background: linear-gradient(135deg, #43aa8b, #2a9d8f); }
+
+.chart-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    margin-bottom: 1.5rem;
+}
+
+.chart-card img {
+    width: 100%;
+    height: auto;
+}
+
+.table-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e, #4361ee);
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+
+
+/* =========================================================
+   EduTrack Professional Theme
+   ========================================================= */
+:root {
+    --et-primary: #2563eb;
+    --et-primary-dark: #1d4ed8;
+    --et-accent: #7c3aed;
+    --et-bg: #f6f8fc;
+    --et-surface: #ffffff;
+    --et-text: #172033;
+    --et-muted: #667085;
+    --et-border: #e7eaf0;
+    --et-success: #16a34a;
+    --et-warning: #d97706;
+    --et-danger: #dc2626;
+    --et-shadow: 0 10px 30px rgba(15, 23, 42, .07);
+}
+
+body {
+    background: var(--et-bg);
+    color: var(--et-text);
+}
+
+.navbar {
+    background: linear-gradient(135deg, #172554 0%, #2563eb 65%, #4f46e5 100%) !important;
+    box-shadow: 0 6px 24px rgba(30, 64, 175, .18);
+}
+
+.navbar-brand {
+    letter-spacing: -.02em;
+}
+
+.card {
+    border: 1px solid var(--et-border);
+    border-radius: 16px;
+    box-shadow: var(--et-shadow);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(15, 23, 42, .10);
+}
+
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all .18s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--et-primary), var(--et-accent));
+    border: none;
+    box-shadow: 0 5px 14px rgba(37, 99, 235, .20);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--et-primary-dark), #6d28d9);
+    transform: translateY(-1px);
+}
+
+.form-control,
+.form-select {
+    border: 1px solid var(--et-border);
+    border-radius: 10px;
+    padding: .65rem .8rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #93c5fd;
+    box-shadow: 0 0 0 .22rem rgba(37, 99, 235, .10);
+}
+
+.table {
+    background: var(--et-surface);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background: #f1f5f9;
+    color: #334155;
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-bottom: 1px solid var(--et-border);
+}
+
+.table tbody tr {
+    transition: background .15s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.badge {
+    border-radius: 999px;
+    padding: .45em .72em;
+    font-weight: 600;
+}
+
+.alert {
+    border: none;
+    border-radius: 12px;
+}
+
+.dashboard-card,
+.stat-card,
+.metric-card {
+    border-radius: 16px;
+    border: 1px solid var(--et-border);
+    background: #fff;
+    box-shadow: var(--et-shadow);
+}
+
+.page-header {
+    margin-bottom: 1.5rem;
+}
+
+.page-header h1,
+.page-header h2 {
+    font-weight: 750;
+    letter-spacing: -.025em;
+}
+
+footer {
+    color: var(--et-muted);
+}
+
+a {
+    transition: color .15s ease;
+}
+
+::selection {
+    background: rgba(37, 99, 235, .18);
+}

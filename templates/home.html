@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Welcome | EduTrack{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <i class="bi bi-mortarboard-fill" style="font-size:3rem;color:#4361ee;"></i>
+  <h2 class="fw-bold mt-3">Welcome to EduTrack</h2>
+  <p class="text-muted">Student Management & Analytics System — project scaffold is up and running.</p>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'login' %}" class="btn btn-primary mt-2"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+  {% endif %}
+</div>
+{% endblock %}

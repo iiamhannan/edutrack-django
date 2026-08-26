@@ -1,0 +1,7 @@
+Django>=5.0,<7.0
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+
+# Uncomment the line below only if you switch to MySQL (see README)
+# mysqlclient>=2.2
