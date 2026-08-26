@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # local apps
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -112,5 +114,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Auth redirects
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "core:home"
 LOGOUT_REDIRECT_URL = "login"

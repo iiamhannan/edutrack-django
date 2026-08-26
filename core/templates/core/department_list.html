@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Departments | EduTrack{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="fw-bold mb-0">Departments</h2>
+  <a href="{% url 'core:department-add' %}" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Department</a>
+</div>
+<div class="table-card">
+  <table class="table table-hover align-middle">
+    <thead><tr><th>Name</th><th>Courses</th><th></th></tr></thead>
+    <tbody>
+      {% for d in departments %}
+      <tr>
+        <td>{{ d.name }}</td><td>{{ d.courses.count }}</td>
+        <td class="text-end">
+          <a href="{% url 'core:department-edit' d.pk %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></a>
+          <a href="{% url 'core:department-delete' d.pk %}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+        </td>
+      </tr>
+      {% empty %}<tr><td colspan="3" class="text-muted text-center py-3">No departments found.</td></tr>{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

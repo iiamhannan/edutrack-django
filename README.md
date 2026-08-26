@@ -3,9 +3,15 @@
 A Django-based Student Management System with an analytics dashboard (Pandas/NumPy/Matplotlib)
 for tracking students, courses, enrollments, attendance, and grades.
 
-> 🚧 **Work in progress.** This commit sets up the base Django project structure
-> (settings, base template, static files, authentication scaffold). Features
-> will be added incrementally in the commits that follow.
+> 🚧 **Work in progress.** This commit adds the `core` app with **Department**
+> and **Course** management (full CRUD), the foundation the rest of the
+> system builds on. More features are added incrementally in the commits
+> that follow.
+
+## Features so far
+- Department CRUD (list, add, edit, delete)
+- Course CRUD, linked to a Department
+- Dashboard showing department/course counts
 
 ## Tech Stack
 - Python, Django
