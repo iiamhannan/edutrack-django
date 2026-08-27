@@ -13,3 +13,13 @@ class CourseAdmin(admin.ModelAdmin):
     list_display = ["code", "title", "credit_hours", "department"]
     list_filter = ["department"]
     search_fields = ["code", "title"]
+
+
+from .models import Student
+
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ["roll_no", "first_name", "last_name", "department", "semester", "status"]
+    list_filter = ["department", "status", "semester"]
+    search_fields = ["roll_no", "first_name", "last_name", "email"]

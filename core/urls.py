@@ -6,6 +6,13 @@ app_name = "core"
 urlpatterns = [
     path("", views.HomeView.as_view(), name="home"),
 
+    # Students
+    path("students/", views.StudentListView.as_view(), name="student-list"),
+    path("students/add/", views.StudentCreateView.as_view(), name="student-add"),
+    path("students/<int:pk>/", views.StudentDetailView.as_view(), name="student-detail"),
+    path("students/<int:pk>/edit/", views.StudentUpdateView.as_view(), name="student-edit"),
+    path("students/<int:pk>/delete/", views.StudentDeleteView.as_view(), name="student-delete"),
+
     # Courses
     path("courses/", views.CourseListView.as_view(), name="course-list"),
     path("courses/add/", views.CourseCreateView.as_view(), name="course-add"),

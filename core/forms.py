@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, Department
+from .models import Course, Department, Student
 
 
 class CourseForm(forms.ModelForm):
@@ -19,3 +19,19 @@ class DepartmentForm(forms.ModelForm):
         model = Department
         fields = ["name"]
         widgets = {"name": forms.TextInput(attrs={"class": "form-control"})}
+
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ["roll_no", "first_name", "last_name", "email", "phone", "department", "semester", "status"]
+        widgets = {
+            "roll_no": forms.TextInput(attrs={"class": "form-control"}),
+            "first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "email": forms.EmailInput(attrs={"class": "form-control"}),
+            "phone": forms.TextInput(attrs={"class": "form-control"}),
+            "department": forms.Select(attrs={"class": "form-select"}),
+            "semester": forms.NumberInput(attrs={"class": "form-control"}),
+            "status": forms.Select(attrs={"class": "form-select"}),
+        }

@@ -28,3 +28,35 @@ class Course(models.Model):
 
     def get_absolute_url(self):
         return reverse("core:course-list")
+
+
+class Student(models.Model):
+    STATUS_CHOICES = [
+        ("active", "Active"),
+        ("graduated", "Graduated"),
+        ("suspended", "Suspended"),
+    ]
+    roll_no = models.CharField(max_length=20, unique=True)
+    first_name = models.CharField(max_length=60)
+    last_name = models.CharField(max_length=60)
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=20, blank=True)
+    department = models.ForeignKey(
+        Department, on_delete=models.SET_NULL, null=True, related_name="students"
+    )
+    semester = models.PositiveSmallIntegerField(default=1)
+    status = models.CharField(max_length=15, choices=STATUS_CHOICES, default="active")
+    enrollment_date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["roll_no"]
+
+    def __str__(self):
+        return f"{self.roll_no} - {self.first_name} {self.last_name}"
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def get_absolute_url(self):
+        return reverse("core:student-detail", args=[self.pk])
