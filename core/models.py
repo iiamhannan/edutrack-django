@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Department(models.Model):
@@ -75,3 +76,43 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return f"{self.student.roll_no} -> {self.course.code}"
+
+
+class Attendance(models.Model):
+    STATUS_CHOICES = [("present", "Present"), ("absent", "Absent"), ("leave", "Leave")]
+    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE, related_name="attendance_records")
+    date = models.DateField()
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="present")
+
+    class Meta:
+        ordering = ["-date"]
+        unique_together = ("enrollment", "date")
+
+    def __str__(self):
+        return f"{self.enrollment} - {self.date} - {self.status}"
+
+
+class Grade(models.Model):
+    enrollment = models.OneToOneField(Enrollment, on_delete=models.CASCADE, related_name="grade")
+    marks_obtained = models.DecimalField(
+        max_digits=5, decimal_places=2, validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+
+    class Meta:
+        ordering = ["-marks_obtained"]
+
+    def __str__(self):
+        return f"{self.enrollment} - {self.marks_obtained}"
+
+    @property
+    def letter_grade(self):
+        m = float(self.marks_obtained)
+        if m >= 85:
+            return "A"
+        elif m >= 70:
+            return "B"
+        elif m >= 60:
+            return "C"
+        elif m >= 50:
+            return "D"
+        return "F"

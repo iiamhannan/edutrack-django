@@ -25,6 +25,8 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'core:course-list' %}"><i class="bi bi-book-fill"></i> Courses</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'core:department-list' %}"><i class="bi bi-diagram-3-fill"></i> Departments</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'core:enrollment-list' %}"><i class="bi bi-journal-check"></i> Enrollments</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'core:attendance-list' %}"><i class="bi bi-calendar-check-fill"></i> Attendance</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'core:grade-list' %}"><i class="bi bi-award-fill"></i> Grades</a></li>
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item"><span class="nav-link text-light-50">Hi, {{ user.username }}</span></li>

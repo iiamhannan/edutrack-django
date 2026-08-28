@@ -2,9 +2,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from .models import Course, Department, Student, Enrollment
+from .models import Course, Department, Student, Enrollment, Attendance, Grade
 from django.views.generic import DetailView
-from .forms import CourseForm, DepartmentForm, StudentForm, EnrollmentForm
+from .forms import CourseForm, DepartmentForm, StudentForm, EnrollmentForm, AttendanceForm, GradeForm
 
 
 # ---------- Dashboard (placeholder — grows in later commits) ----------
@@ -146,3 +146,58 @@ class EnrollmentDeleteView(LoginRequiredMixin, DeleteView):
     model = Enrollment
     template_name = "core/confirm_delete.html"
     success_url = reverse_lazy("core:enrollment-list")
+
+
+# ---------- Attendance CRUD ----------
+class AttendanceListView(LoginRequiredMixin, ListView):
+    model = Attendance
+    template_name = "core/attendance_list.html"
+    context_object_name = "records"
+    paginate_by = 20
+
+    def get_queryset(self):
+        return super().get_queryset().select_related("enrollment__student", "enrollment__course")
+
+
+class AttendanceCreateView(LoginRequiredMixin, CreateView):
+    model = Attendance
+    form_class = AttendanceForm
+    template_name = "core/attendance_form.html"
+    success_url = reverse_lazy("core:attendance-list")
+
+
+class AttendanceDeleteView(LoginRequiredMixin, DeleteView):
+    model = Attendance
+    template_name = "core/confirm_delete.html"
+    success_url = reverse_lazy("core:attendance-list")
+
+
+# ---------- Grade CRUD ----------
+class GradeListView(LoginRequiredMixin, ListView):
+    model = Grade
+    template_name = "core/grade_list.html"
+    context_object_name = "grades"
+    paginate_by = 15
+
+    def get_queryset(self):
+        return super().get_queryset().select_related("enrollment__student", "enrollment__course")
+
+
+class GradeCreateView(LoginRequiredMixin, CreateView):
+    model = Grade
+    form_class = GradeForm
+    template_name = "core/grade_form.html"
+    success_url = reverse_lazy("core:grade-list")
+
+
+class GradeUpdateView(LoginRequiredMixin, UpdateView):
+    model = Grade
+    form_class = GradeForm
+    template_name = "core/grade_form.html"
+    success_url = reverse_lazy("core:grade-list")
+
+
+class GradeDeleteView(LoginRequiredMixin, DeleteView):
+    model = Grade
+    template_name = "core/confirm_delete.html"
+    success_url = reverse_lazy("core:grade-list")

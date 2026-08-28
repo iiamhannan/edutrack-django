@@ -29,4 +29,15 @@ urlpatterns = [
     path("departments/add/", views.DepartmentCreateView.as_view(), name="department-add"),
     path("departments/<int:pk>/edit/", views.DepartmentUpdateView.as_view(), name="department-edit"),
     path("departments/<int:pk>/delete/", views.DepartmentDeleteView.as_view(), name="department-delete"),
+
+    # Attendance
+    path("attendance/", views.AttendanceListView.as_view(), name="attendance-list"),
+    path("attendance/add/", views.AttendanceCreateView.as_view(), name="attendance-add"),
+    path("attendance/<int:pk>/delete/", views.AttendanceDeleteView.as_view(), name="attendance-delete"),
+
+    # Grades
+    path("grades/", views.GradeListView.as_view(), name="grade-list"),
+    path("grades/add/", views.GradeCreateView.as_view(), name="grade-add"),
+    path("grades/<int:pk>/edit/", views.GradeUpdateView.as_view(), name="grade-edit"),
+    path("grades/<int:pk>/delete/", views.GradeDeleteView.as_view(), name="grade-delete"),
 ]

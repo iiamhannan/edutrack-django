@@ -32,3 +32,17 @@ from .models import Enrollment
 class EnrollmentAdmin(admin.ModelAdmin):
     list_display = ["student", "course", "semester", "date_enrolled"]
     list_filter = ["semester", "course"]
+
+
+from .models import Attendance, Grade
+
+
+@admin.register(Attendance)
+class AttendanceAdmin(admin.ModelAdmin):
+    list_display = ["enrollment", "date", "status"]
+    list_filter = ["status", "date"]
+
+
+@admin.register(Grade)
+class GradeAdmin(admin.ModelAdmin):
+    list_display = ["enrollment", "marks_obtained", "letter_grade"]
