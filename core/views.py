@@ -2,9 +2,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from .models import Course, Department, Student
+from .models import Course, Department, Student, Enrollment
 from django.views.generic import DetailView
-from .forms import CourseForm, DepartmentForm, StudentForm
+from .forms import CourseForm, DepartmentForm, StudentForm, EnrollmentForm
 
 
 # ---------- Dashboard (placeholder — grows in later commits) ----------
@@ -21,6 +21,7 @@ class HomeView(LoginRequiredMixin, ListView):
         ctx["student_count"] = Student.objects.count()
         ctx["course_count"] = Course.objects.count()
         ctx["department_count"] = Department.objects.count()
+        ctx["enrollment_count"] = Enrollment.objects.count()
         return ctx
 
 
@@ -121,3 +122,27 @@ class StudentDeleteView(LoginRequiredMixin, DeleteView):
     model = Student
     template_name = "core/confirm_delete.html"
     success_url = reverse_lazy("core:student-list")
+
+
+# ---------- Enrollment CRUD ----------
+class EnrollmentListView(LoginRequiredMixin, ListView):
+    model = Enrollment
+    template_name = "core/enrollment_list.html"
+    context_object_name = "enrollments"
+    paginate_by = 15
+
+    def get_queryset(self):
+        return super().get_queryset().select_related("student", "course")
+
+
+class EnrollmentCreateView(LoginRequiredMixin, CreateView):
+    model = Enrollment
+    form_class = EnrollmentForm
+    template_name = "core/enrollment_form.html"
+    success_url = reverse_lazy("core:enrollment-list")
+
+
+class EnrollmentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Enrollment
+    template_name = "core/confirm_delete.html"
+    success_url = reverse_lazy("core:enrollment-list")

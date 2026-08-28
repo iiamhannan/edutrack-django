@@ -47,6 +47,7 @@ class Student(models.Model):
     semester = models.PositiveSmallIntegerField(default=1)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default="active")
     enrollment_date = models.DateField(auto_now_add=True)
+    courses = models.ManyToManyField(Course, through="Enrollment", related_name="students")
 
     class Meta:
         ordering = ["roll_no"]
@@ -60,3 +61,17 @@ class Student(models.Model):
 
     def get_absolute_url(self):
         return reverse("core:student-detail", args=[self.pk])
+
+
+class Enrollment(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="enrollments")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="enrollments")
+    semester = models.PositiveSmallIntegerField(default=1)
+    date_enrolled = models.DateField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("student", "course", "semester")
+        ordering = ["-date_enrolled"]
+
+    def __str__(self):
+        return f"{self.student.roll_no} -> {self.course.code}"

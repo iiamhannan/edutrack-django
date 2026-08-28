@@ -13,6 +13,11 @@ urlpatterns = [
     path("students/<int:pk>/edit/", views.StudentUpdateView.as_view(), name="student-edit"),
     path("students/<int:pk>/delete/", views.StudentDeleteView.as_view(), name="student-delete"),
 
+    # Enrollments
+    path("enrollments/", views.EnrollmentListView.as_view(), name="enrollment-list"),
+    path("enrollments/add/", views.EnrollmentCreateView.as_view(), name="enrollment-add"),
+    path("enrollments/<int:pk>/delete/", views.EnrollmentDeleteView.as_view(), name="enrollment-delete"),
+
     # Courses
     path("courses/", views.CourseListView.as_view(), name="course-list"),
     path("courses/add/", views.CourseCreateView.as_view(), name="course-add"),

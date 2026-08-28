@@ -23,3 +23,12 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ["roll_no", "first_name", "last_name", "department", "semester", "status"]
     list_filter = ["department", "status", "semester"]
     search_fields = ["roll_no", "first_name", "last_name", "email"]
+
+
+from .models import Enrollment
+
+
+@admin.register(Enrollment)
+class EnrollmentAdmin(admin.ModelAdmin):
+    list_display = ["student", "course", "semester", "date_enrolled"]
+    list_filter = ["semester", "course"]
