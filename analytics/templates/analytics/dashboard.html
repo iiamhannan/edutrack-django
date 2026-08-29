@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Analytics | EduTrack{% endblock %}
+{% block content %}
+<h2 class="fw-bold mb-1">Analytics Dashboard</h2>
+<p class="text-muted mb-4">Computed live with Pandas &amp; NumPy, rendered with Matplotlib.</p>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card-stat bg-grad-1">
+      <small>Overall Average</small><h2>{{ stats.overall_average }}%</h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card-stat bg-grad-2">
+      <small>Std. Deviation</small><h2>{{ stats.overall_std }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card-stat bg-grad-3">
+      <small>Highest / Lowest</small><h2>{{ stats.highest_score }} / {{ stats.lowest_score }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card-stat bg-grad-4">
+      <small>Attendance Rate</small><h2>{{ stats.overall_attendance_pct }}%</h2>
+    </div>
+  </div>
+</div>
+
+{% if has_grade_data %}
+<div class="row">
+  <div class="col-lg-6">
+    <div class="chart-card">
+      <h5 class="fw-bold">Average Marks per Course</h5>
+      <img src="data:image/png;base64,{{ charts.avg_marks_chart }}" alt="Average marks per course">
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="chart-card">
+      <h5 class="fw-bold">Grade Distribution</h5>
+      <img src="data:image/png;base64,{{ charts.grade_distribution_chart }}" alt="Grade distribution">
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="chart-card">
+      <h5 class="fw-bold">Top 5 Students</h5>
+      <img src="data:image/png;base64,{{ charts.top_students_chart }}" alt="Top students">
+    </div>
+  </div>
+  {% if has_attendance_data %}
+  <div class="col-lg-6">
+    <div class="chart-card">
+      <h5 class="fw-bold">Attendance % per Course</h5>
+      <img src="data:image/png;base64,{{ charts.attendance_chart }}" alt="Attendance percentage">
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<div class="table-card">
+  <h5 class="fw-bold mb-3">Top 5 Students (by Average Marks)</h5>
+  <table class="table table-sm">
+    <thead><tr><th>#</th><th>Student</th><th>Average Marks</th></tr></thead>
+    <tbody>
+      {% for name, avg in top_students_table %}
+      <tr><td>{{ forloop.counter }}</td><td>{{ name }}</td><td>{{ avg|floatformat:2 }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="alert alert-info">
+  No grade data yet. Add students, courses, enrollments and grades to see analytics here —
+  or run <code>python manage.py seed_data</code> to load demo data.
+</div>
+{% endif %}
+{% endblock %}

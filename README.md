@@ -3,10 +3,11 @@
 A Django-based Student Management System with an analytics dashboard (Pandas/NumPy/Matplotlib)
 for tracking students, courses, enrollments, attendance, and grades.
 
-> 🚧 **Work in progress.** This commit adds **Attendance** and **Grade**
-> tracking per enrollment, with an auto-computed letter grade (A–F). Student
-> detail page now shows marks + letter grade per course. More features are
-> added incrementally in the commits that follow.
+> 🚧 **Work in progress.** This commit adds the **Analytics Dashboard**
+> (`/analytics/`), which uses Pandas + NumPy to compute grade/attendance
+> statistics and Matplotlib to render charts (average marks per course,
+> grade distribution, top students, attendance %). More features are added
+> incrementally in the commits that follow.
 
 ## Features so far
 - Department CRUD (list, add, edit, delete)
@@ -15,6 +16,7 @@ for tracking students, courses, enrollments, attendance, and grades.
 - Enrollment system — enroll students into courses per semester
 - Attendance tracking (present/absent/leave) per enrollment
 - Grading system with auto-calculated letter grades
+- **Analytics dashboard** — Pandas/NumPy stats + Matplotlib charts (average marks, grade distribution, top students, attendance %)
 - Dashboard showing student/department/course/enrollment counts + recent students
 
 ## Tech Stack
