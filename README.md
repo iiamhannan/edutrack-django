@@ -1,4 +1,5 @@
 # EduTrack – Student Management & Analytics System
+🔗 Live Demo: https://iiamhannan26.pythonanywhere.com
 
 A full-featured **Student Management System** built with Django, featuring complete CRUD for
 departments, courses, students, enrollments, attendance, and grades — plus an **analytics
