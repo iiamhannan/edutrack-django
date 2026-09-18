@@ -1,0 +1,422 @@
+/* =========================================================================
+   EduTrack — Django Admin Theme
+   Professional light + dark theme for the built-in Django admin.
+   Works with Django's native theme toggle (html[data-theme="dark|light"])
+   and falls back to the OS preference when the user hasn't chosen one.
+   No icons/emoji are used anywhere in this file — text and colour only.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
+/* -------------------------------------------------------------------------
+   1. LIGHT THEME (default + explicit)
+   ------------------------------------------------------------------------- */
+:root,
+html[data-theme="light"] {
+  /* Brand palette */
+  --et-navy:        #12233f;
+  --et-navy-deep:   #0b1729;
+  --et-blue:        #2f5fd6;
+  --et-blue-deep:   #1f43a8;
+  --et-teal:        #0f8b8d;
+  --et-amber:       #b5760a;
+  --et-red:         #b3261e;
+
+  /* Core Django admin variables */
+  --primary:            var(--et-navy);
+  --secondary:          #46618c;
+  --accent:             var(--et-teal);
+  --primary-fg:         #f6f8fc;
+
+  --body-fg:            #1b2430;
+  --body-bg:            #eef1f6;
+  --body-quiet-color:   #5b6675;
+  --body-loud-color:    #10151d;
+
+  --header-color:       #f3f6fb;
+  --header-branding-color: #ffffff;
+  --header-bg:          var(--et-navy-deep);
+  --header-link-color:  #cfe0ff;
+
+  --breadcrumbs-fg:     #d7e2f5;
+  --breadcrumbs-link-fg: #ffffff;
+  --breadcrumbs-bg:     var(--et-blue-deep);
+
+  --link-fg:            var(--et-blue-deep);
+  --link-hover-color:   var(--et-navy-deep);
+  --link-selected-fg:   var(--et-teal);
+
+  --hairline-color:     #d7dde6;
+  --border-color:       #ccd4e0;
+
+  --error-fg:           var(--et-red);
+
+  --message-success-bg: #e3f5ec;
+  --message-warning-bg: #fdf1dc;
+  --message-error-bg:   #fbe6e5;
+
+  --darkened-bg:        #e4e9f1;
+  --selected-bg:        #e8eefb;
+  --selected-row:       #eef4ff;
+
+  --button-fg:          #fff;
+  --button-bg:          var(--et-blue);
+  --button-hover-bg:    var(--et-blue-deep);
+  --default-button-bg:  var(--et-navy);
+  --default-button-hover-bg: var(--et-navy-deep);
+  --close-button-bg:    #6b7684;
+  --close-button-hover-bg: #545e6b;
+  --delete-button-bg:   #ae2e24;
+  --delete-button-hover-bg: #8c231c;
+
+  --object-tools-fg:    var(--button-fg);
+  --object-tools-bg:    var(--close-button-bg);
+  --object-tools-hover-bg: var(--close-button-hover-bg);
+
+  --font-family-primary: 'Inter', -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-monospace: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* -------------------------------------------------------------------------
+   2. DARK THEME (explicit toggle, plus OS-level fallback)
+   ------------------------------------------------------------------------- */
+html[data-theme="dark"] {
+  --primary:            #9fc0ff;
+  --secondary:          #8aa0c4;
+  --accent:             #4fd1c5;
+  --primary-fg:         #0b0f16;
+
+  --body-fg:            #dfe6f0;
+  --body-bg:            #0f1420;
+  --body-quiet-color:   #9aa7bd;
+  --body-loud-color:    #f5f8fc;
+
+  --header-color:       #eef2fa;
+  --header-branding-color: #ffffff;
+  --header-bg:          #060a12;
+  --header-link-color:  #a9c4ff;
+
+  --breadcrumbs-fg:     #c2d3f0;
+  --breadcrumbs-link-fg: #ffffff;
+  --breadcrumbs-bg:     #16233d;
+
+  --link-fg:            #7fb0ff;
+  --link-hover-color:   #b7d3ff;
+  --link-selected-fg:   #4fd1c5;
+
+  --hairline-color:     #263349;
+  --border-color:       #2b3a54;
+
+  --error-fg:           #ff8a80;
+
+  --message-success-bg: #103828;
+  --message-warning-bg: #3a2c0d;
+  --message-error-bg:   #3c1614;
+
+  --darkened-bg:        #0b101a;
+  --selected-bg:        #172440;
+  --selected-row:       #14203a;
+
+  --button-fg:          #06101f;
+  --button-bg:          #6fa1ff;
+  --button-hover-bg:    #8fb7ff;
+  --default-button-bg:  #2c3c58;
+  --default-button-hover-bg: #384c6d;
+  --close-button-bg:    #3a4863;
+  --close-button-hover-bg: #4a5a79;
+  --delete-button-bg:   #b5453b;
+  --delete-button-hover-bg: #d0544a;
+
+  --object-tools-fg:    #eef2fa;
+  --object-tools-bg:    #2c3c58;
+  --object-tools-hover-bg: #384c6d;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] {
+    --primary:            #9fc0ff;
+    --secondary:          #8aa0c4;
+    --accent:             #4fd1c5;
+    --primary-fg:         #0b0f16;
+
+    --body-fg:            #dfe6f0;
+    --body-bg:            #0f1420;
+    --body-quiet-color:   #9aa7bd;
+    --body-loud-color:    #f5f8fc;
+
+    --header-color:       #eef2fa;
+    --header-branding-color: #ffffff;
+    --header-bg:          #060a12;
+    --header-link-color:  #a9c4ff;
+
+    --breadcrumbs-fg:     #c2d3f0;
+    --breadcrumbs-link-fg: #ffffff;
+    --breadcrumbs-bg:     #16233d;
+
+    --link-fg:            #7fb0ff;
+    --link-hover-color:   #b7d3ff;
+    --link-selected-fg:   #4fd1c5;
+
+    --hairline-color:     #263349;
+    --border-color:       #2b3a54;
+
+    --error-fg:           #ff8a80;
+
+    --message-success-bg: #103828;
+    --message-warning-bg: #3a2c0d;
+    --message-error-bg:   #3c1614;
+
+    --darkened-bg:        #0b101a;
+    --selected-bg:        #172440;
+    --selected-row:       #14203a;
+
+    --button-fg:          #06101f;
+    --button-bg:          #6fa1ff;
+    --button-hover-bg:    #8fb7ff;
+    --default-button-bg:  #2c3c58;
+    --default-button-hover-bg: #384c6d;
+    --close-button-bg:    #3a4863;
+    --close-button-hover-bg: #4a5a79;
+    --delete-button-bg:   #b5453b;
+    --delete-button-hover-bg: #d0544a;
+
+    --object-tools-fg:    #eef2fa;
+    --object-tools-bg:    #2c3c58;
+    --object-tools-hover-bg: #384c6d;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   3. TYPOGRAPHY
+   ------------------------------------------------------------------------- */
+body,
+input, select, textarea, button {
+  font-family: var(--font-family-primary) !important;
+}
+
+body {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--body-fg);
+}
+
+#header,
+.module h2, .module caption, .inline-group h2 {
+  font-family: var(--font-family-primary) !important;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.small, small, p.help, .help, div.help {
+  color: var(--body-quiet-color);
+  font-size: 12.5px;
+}
+
+/* Monospace for identifiers, codes and dates so they stay easy to scan */
+#result_list td.field-code,
+#result_list td.field-roll_no,
+#result_list td.field-marks_obtained {
+  font-family: var(--font-family-monospace);
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+/* -------------------------------------------------------------------------
+   4. HEADER / BRANDING / BREADCRUMBS
+   ------------------------------------------------------------------------- */
+#header {
+  padding: 14px 40px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+#branding h1#site-name a {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: var(--header-branding-color);
+}
+
+#branding h1#site-name a .brand-accent {
+  font-weight: 500;
+  color: var(--header-link-color);
+}
+
+div.breadcrumbs {
+  font-size: 13px;
+  padding: 10px 40px;
+}
+
+/* Theme toggle button: keep it legible in both modes */
+.theme-toggle {
+  border: 1px solid rgba(255,255,255,0.35) !important;
+  border-radius: 6px;
+}
+
+/* -------------------------------------------------------------------------
+   5. MODULES / DASHBOARD CARDS
+   ------------------------------------------------------------------------- */
+.module {
+  border-radius: 10px;
+  border: 1px solid var(--hairline-color);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.module h2, .module caption, .inline-group h2 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 10px 14px;
+}
+
+#content-main .module table {
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   6. CHANGE LIST TABLE
+   ------------------------------------------------------------------------- */
+#changelist-filter {
+  border-radius: 10px;
+  border: 1px solid var(--hairline-color);
+}
+
+#changelist-filter h2 {
+  border-radius: 10px 10px 0 0;
+}
+
+#result_list thead th {
+  font-weight: 700;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--body-loud-color);
+}
+
+#result_list tbody tr:hover {
+  background: var(--selected-row);
+}
+
+#result_list tbody td, #result_list tbody th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* -------------------------------------------------------------------------
+   7. BUTTONS
+   ------------------------------------------------------------------------- */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.object-tools a.addlink {
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------------------
+   8. STATUS / GRADE BADGES  (used via admin.py list_display methods)
+   No icons or emoji — text pills with strong colour contrast in both themes.
+   ------------------------------------------------------------------------- */
+.et-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Student status */
+.et-badge.status-active     { background: #e3f5ec; color: #0f6a41; border-color: #b7e3cb; }
+.et-badge.status-graduated  { background: #e6eefc; color: #1f4faa; border-color: #c3d7f7; }
+.et-badge.status-suspended  { background: #fbe6e5; color: #9c2b22; border-color: #f2c3c0; }
+
+/* Attendance status */
+.et-badge.attend-present { background: #e3f5ec; color: #0f6a41; border-color: #b7e3cb; }
+.et-badge.attend-absent  { background: #fbe6e5; color: #9c2b22; border-color: #f2c3c0; }
+.et-badge.attend-leave   { background: #fdf1dc; color: #8a5a06; border-color: #f2ddab; }
+
+/* Letter grades */
+.et-badge.grade-A { background: #e3f5ec; color: #0f6a41; border-color: #b7e3cb; }
+.et-badge.grade-B { background: #e6eefc; color: #1f4faa; border-color: #c3d7f7; }
+.et-badge.grade-C { background: #fdf1dc; color: #8a5a06; border-color: #f2ddab; }
+.et-badge.grade-D { background: #fbeee0; color: #9a4a12; border-color: #f2d2b0; }
+.et-badge.grade-F { background: #fbe6e5; color: #9c2b22; border-color: #f2c3c0; }
+
+html[data-theme="dark"] .et-badge.status-active,
+html[data-theme="dark"] .et-badge.attend-present,
+html[data-theme="dark"] .et-badge.grade-A {
+  background: #0f2a1e; color: #6bd6a0; border-color: #1c4a34;
+}
+html[data-theme="dark"] .et-badge.status-graduated,
+html[data-theme="dark"] .et-badge.grade-B {
+  background: #10203e; color: #8fb4ff; border-color: #223a63;
+}
+html[data-theme="dark"] .et-badge.status-suspended,
+html[data-theme="dark"] .et-badge.attend-absent,
+html[data-theme="dark"] .et-badge.grade-F {
+  background: #33130f; color: #ff9a8f; border-color: #5c231c;
+}
+html[data-theme="dark"] .et-badge.attend-leave,
+html[data-theme="dark"] .et-badge.grade-C {
+  background: #33260a; color: #e8bd63; border-color: #5c4515;
+}
+html[data-theme="dark"] .et-badge.grade-D {
+  background: #331c0a; color: #f0a468; border-color: #5c3315;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] .et-badge.status-active,
+  html[data-theme="auto"] .et-badge.attend-present,
+  html[data-theme="auto"] .et-badge.grade-A {
+    background: #0f2a1e; color: #6bd6a0; border-color: #1c4a34;
+  }
+  html[data-theme="auto"] .et-badge.status-graduated,
+  html[data-theme="auto"] .et-badge.grade-B {
+    background: #10203e; color: #8fb4ff; border-color: #223a63;
+  }
+  html[data-theme="auto"] .et-badge.status-suspended,
+  html[data-theme="auto"] .et-badge.attend-absent,
+  html[data-theme="auto"] .et-badge.grade-F {
+    background: #33130f; color: #ff9a8f; border-color: #5c231c;
+  }
+  html[data-theme="auto"] .et-badge.attend-leave,
+  html[data-theme="auto"] .et-badge.grade-C {
+    background: #33260a; color: #e8bd63; border-color: #5c4515;
+  }
+  html[data-theme="auto"] .et-badge.grade-D {
+    background: #331c0a; color: #f0a468; border-color: #5c3315;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   9. MUTED HELPER TEXT — secondary line under a name (e.g. e-mail under student)
+   ------------------------------------------------------------------------- */
+.et-subtext {
+  display: block;
+  font-size: 11.5px;
+  color: var(--body-quiet-color);
+  margin-top: 2px;
+}
+
+/* -------------------------------------------------------------------------
+   10. LOGIN SCREEN
+   ------------------------------------------------------------------------- */
+.login #header {
+  justify-content: center;
+}
+.login .form-row label {
+  font-weight: 600;
+}
